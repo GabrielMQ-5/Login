@@ -5,33 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="/Content/dashboard.css" rel="stylesheet">
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand">
-            <span class="glyphicon glyphicon-home"></span>
-            <p style="color:white; font-weight:600">Navigation Bar</p>
-        </a>
-    </nav>
+    <div class="row">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <h3 style="color:white; font-weight:600">Navigation Bar</h3>
+        </nav>
+    </div>
     <div class="container body-content">
         <div class="row">
-            <nav class="col-lg-2 bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a href="@Url.Action("Dashboard","Home")">Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            @RenderBody()
+            <div class="col-lg-2">
+                <nav class="col-lg-2 bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <h5 style="margin:15px">Sidebar</h5>
+                        <ul class="nav flex-column" style="padding:15px">
+                            <li class="nav-item">
+                                <a href="@Url.Action("Login","Home")">Back to Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">Dummy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">Dummy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">Dummy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-10">
+                @RenderBody()
+            </div>
         </div>
     </div>
     <hr/>
     <footer>
-        <p align="left" style="padding:20px">@DateTime.Now.Year</p>
+        <p align="right" style="padding:20px">@DateTime.Now.Year</p>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
