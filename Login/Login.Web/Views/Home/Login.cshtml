@@ -1,0 +1,59 @@
+﻿@model Login.Entities.User
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @if (TempData["Message"] != null)
+    {
+        string message = TempData["Message"].ToString();
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>@message</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="row col-lg-12" align="center" style="padding:40px">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h3>LOGIN</h3>
+            <form role="form" action="@Url.Action("Login","Home")" method="post">
+                <div class="form-group">
+                    @Html.ValidationMessageFor(x => x.Username, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "Username", @id = "txtUsername" })
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <div class="form-group">
+                    @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Password", @id = "txtPassword" })
+                    <span class="glyphicon glyphicon-lock"></span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <button type="submit" id="btnSubmit" class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <hr />
+    <footer>
+        <p align="center">@DateTime.Now.Year</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
